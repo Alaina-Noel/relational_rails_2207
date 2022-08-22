@@ -1,0 +1,7 @@
+<h1>All Orders</h1>
+  <% @orders.each do |order| %>
+  <p>Customer ID: <%= order.customer_id%></p>
+  <p>Quantity Ordered: <%= order.quantity%></p>
+  <p>Gift? <%= order.gift%></p>
+  <p>What was ordered? <%= order.order_type%></p>
+<% end %>
