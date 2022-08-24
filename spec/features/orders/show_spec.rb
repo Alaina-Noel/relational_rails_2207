@@ -4,8 +4,8 @@ RSpec.describe 'the orders show page' do
   it 'displays the order id number' do
     customer = Customer.create!(first_name: "Robert", last_name: "Kneiling" , in_usa: true, credit_score: 754 )
     order = customer.orders.create!(quantity: 1, gift: true, order_type: "green pants")
-    visit '/orders'
-
+    visit "/orders/#{order.id}"
+    
     expect(page).to have_content(order.id)
 end
 
