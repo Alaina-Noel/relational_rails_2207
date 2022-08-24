@@ -1,5 +1,5 @@
 <p>This is the customers orders page</p>
-    <p><% @orders_of_parent.each do |order| %></p>
+    <p><% @orders.each do |order| %></p>
     <p>quantity ordered <%= order.quantity %></p>
     <p>is this a gift? <%= order.gift %></p>
     <p>created <%= order.created_at %></p>
