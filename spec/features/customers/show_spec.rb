@@ -56,7 +56,19 @@ RSpec.describe 'the customers index page', type: :feature do
       visit "/customers/#{customer.id}"
 
       expect(page).to have_content(customer.number_of_orders)
-    end
+      end
     end
   end
+
+  describe "user count" do
+    it 'I can see the number of orders a customer made' do
+      customer = Customer.create!(first_name: "Alaina", last_name: "Kneiling" , in_usa: true, credit_score: 801 )
+      order = customer.orders.create!(quantity: 1, gift: true, order_type: "green shirt")
+
+      visit "/customers/#{customer.id}"
+
+      expect(page).to have_content("order count: 1")
+    end
+  end
+
 end
