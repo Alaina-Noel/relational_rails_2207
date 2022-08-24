@@ -8,13 +8,12 @@ RSpec.describe 'the customers index page', type: :feature do
         order1 = customer.orders.create!(quantity: 1, gift: true, order_type: "green shirt")
         order2 = customer.orders.create!(quantity: 3, gift: true, order_type: "polly pockets")
         visit "/customers/#{customer.id}/orders" 
-        save_and_open_page
 
         expect(page).to have_content(order1.order_type)
         expect(page).to have_content(order2.order_type)
       end
 
-     xit 'I can see each orders attributes associated with that parent' do
+     it 'I can see each orders attributes associated with that parent' do
       customer = Customer.create!(first_name: "Alaina", last_name: "Kneiling" , in_usa: true, credit_score: 801 )
       order1 = customer.orders.create!(quantity: 1, gift: true, order_type: "green shirt")
       order2 = customer.orders.create!(quantity: 3, gift: true, order_type: "polly pockets")
