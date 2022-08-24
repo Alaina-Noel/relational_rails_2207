@@ -29,6 +29,14 @@ end
   expect(page).to have_content(customer.credit_score)
 end
 
+it 'displays the customers timestamps' do
+  customer = Customer.create!(first_name: "Samuel", last_name: "Jackson" , in_usa: true, credit_score: 400 )
+  visit "/customers/#{customer.id}"
+
+  expect(page).to have_content(customer.created_at)
+  expect(page).to have_content(customer.updated_at)
+end
+
   it 'does not display an unaffiliated customer'do
   customer = Customer.create!(first_name: "Samuel", last_name: "Jackson" , in_usa: true, credit_score: 400 )
   customer2 = Customer.create!(first_name: "Pheobe", last_name: "Jackson" , in_usa: false, credit_score: 400 )
