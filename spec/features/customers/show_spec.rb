@@ -39,7 +39,7 @@ RSpec.describe 'the customers index page', type: :feature do
         expect(page).to have_content(customer.updated_at)
       end
 
-        it 'I can not see an unaffiliated customer'do
+      it 'I can not see an unaffiliated customer'do
         customer = Customer.create!(first_name: "Samuel", last_name: "Jackson" , in_usa: true, credit_score: 400 )
         customer2 = Customer.create!(first_name: "Pheobe", last_name: "Jackson" , in_usa: false, credit_score: 400 )
 
@@ -47,6 +47,16 @@ RSpec.describe 'the customers index page', type: :feature do
 
         expect(page).to_not have_content(customer2.first_name)
       end
+
+    it 'I can not see an unaffiliated customer'do
+      customer = Customer.create!(first_name: "MK", last_name: "Washing" , in_usa: true, credit_score: 410 )
+      order1 = customer.orders.create!(quantity: 10, gift: true, order_type: "green jacket")
+      order2 = customer.orders.create!(quantity: 100, gift: false, order_type: "green leaves")
+
+      visit "/customers/#{customer.id}"
+
+      expect(page).to have_content(customer.number_of_orders)
+    end
     end
   end
 end
