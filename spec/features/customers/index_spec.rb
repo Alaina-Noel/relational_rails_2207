@@ -15,5 +15,7 @@ RSpec.describe 'the customers index page' do
     expect(page).to have_content(customer.last_name)
   end
 
+  it 'does not display the customers orders' 
+
 
 end
