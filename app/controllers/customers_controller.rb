@@ -9,7 +9,8 @@ class CustomersController < ApplicationController
   end
 
   def all_orders
-    @customer = Customer.find(params[:id])
+    # require 'pry' ; binding.pry
+    @orders_of_parent = Order.where(customer_id: params[:id])
   end
   
 end
