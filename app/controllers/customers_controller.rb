@@ -8,4 +8,8 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
 
+  def all_orders
+    @customer = Customer.find(params[:id])
+  end
+  
 end
