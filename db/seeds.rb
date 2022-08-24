@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+customer = Customer.create!(first_name: "Alaina", last_name: "Kneiling" , in_usa: true, credit_score: 801 )
+order1 = customer.orders.create!(quantity: 1, gift: true, order_type: "green shirt")
+order2 = customer.orders.create!(quantity: 3, gift: true, order_type: "polly pockets")
