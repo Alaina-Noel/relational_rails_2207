@@ -6,10 +6,10 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @order_count = @customer.orders.count
   end
 
   def all_orders
-    # require 'pry' ; binding.pry
     @orders_of_parent = Order.where(customer_id: params[:id])
   end
   
