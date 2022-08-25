@@ -44,14 +44,18 @@ RSpec.describe 'the customers index page', type: :feature do
         expect(current_path).to eq("/orders")
       end
 
-      xit "when I visit /orders the records are ordered by recently created" do
+      it "when I visit /orders the records are ordered by recently created" do
         customer1 = Customer.create!(first_name: "Sarah", last_name: "Robertson" , in_usa: false, credit_score: 755 )
         customer2 = Customer.create!(first_name: "Maya", last_name: "Jordan" , in_usa:false, credit_score:400 )
         customer3 = Customer.create!(first_name: "Gina", last_name: "Jefferson" , in_usa: true, credit_score: 802 )
+        order1 = customer1.orders.create!(customer_id: 1, quantity: 400, gift: false, order_type: "kitchen set")
+        order2 = customer2.orders.create!(customer_id: 1, quantity: 400, gift: false, order_type: "polly pockets")
 
-        visit "/orders"
-        this = find("#{customer1.id}")
-        that = find("#{customer2.id}")
+        visit "/customers"
+        # save_and_open_page
+        # require 'pry' ; binding.pry
+        this = "Sarah"
+        that = "Maya"
 
         expect(this).to appear_before(that)
 
