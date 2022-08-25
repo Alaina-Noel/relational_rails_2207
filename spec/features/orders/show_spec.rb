@@ -57,17 +57,17 @@ end
         customer = Customer.create!(first_name: "Sarah", last_name: "Robertson" , in_usa: false, credit_score: 755 )
         order = customer.orders.create!(customer_id: 1, quantity: 400, gift: false, order_type: "kitchen set")
         visit "/orders/#{order.id}"
-
+        
         expect(page).to have_content("This link will take you to all orders index page")
       end
 
-      xit 'The link on the top of the page will take you to the orders index page' do
+      it 'The link on the top of the page will take you to the orders index page' do
         customer = Customer.create!(first_name: "Sarah", last_name: "Robertson" , in_usa: false, credit_score: 755 )
         order = customer.orders.create!(customer_id: 1, quantity: 400, gift: false, order_type: "kitchen set")
         visit "/orders/#{order.id}"
         click_on "This link will take you to all orders index page"
 
-        expect(current_path).to eq("/orders/index")
+        expect(current_path).to eq("/orders")
       end
     end
   end
