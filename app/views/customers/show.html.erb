@@ -1,5 +1,6 @@
 <a href="/orders">This link will take you to all orders index page</a>
 <a href="/customers">This link will take you to all customers index page</a>
+
 <p>First Name: <%= @customer.first_name%></p>
 <p>Last Name: <%= @customer.last_name%>
 <p>In USA?: <%= @customer.in_usa%>
@@ -8,3 +9,4 @@
 <p>Updated At: <%= @customer.updated_at%>
 <p>ID in Database: <%= @customer.id%>
 <p>order count: <%= @order_count %>
+<%= link_to "Click this link to see all of the orders this person has made.", "/customers/#{@customer.id}/orders" %>

@@ -99,6 +99,35 @@ RSpec.describe 'the customers index page', type: :feature do
 
       expect(current_path).to eq("/customers")
     end
+
+    it "I will see a link at the top of the page'" do
+      customer = Customer.create!(first_name: "Sarah", last_name: "Robertson" , in_usa: false, credit_score: 755 )
+      order1 = customer.orders.create!(quantity: 1, gift: true, order_type: "green shirt")
+      order2 = customer.orders.create!(quantity: 3, gift: true, order_type: "polly pockets")
+      visit "/customers/#{customer.id}"
+
+      expect(page).to have_content("Click this link to see all of the orders this person has made.")
+    end
+
+    it "The link on the top of the page will take you to the orders page '/customers/id/orders'" do
+      customer = Customer.create!(first_name: "Sarah", last_name: "Robertson" , in_usa: false, credit_score: 755 )
+      order1 = customer.orders.create!(quantity: 1, gift: true, order_type: "green shirt")
+      order2 = customer.orders.create!(quantity: 3, gift: true, order_type: "polly pockets")
+      visit "/customers/#{customer.id}"
+      click_on "Click this link to see all of the orders this person has made."
+
+      expect(current_path).to eq("/customers/#{customer.id}/orders")
+      expect(page).to have_content(order1.gift)
+      expect(page).to have_content(order1.created_at)
+      expect(page).to have_content(order1.customer_id)
+      expect(page).to have_content(order1.updated_at)
+      expect(page).to have_content(order2.gift)
+      expect(page).to have_content(order2.created_at)
+      expect(page).to have_content(order2.customer_id)
+      expect(page).to have_content(order2.updated_at)
+    end
+
+
   end
 
   
