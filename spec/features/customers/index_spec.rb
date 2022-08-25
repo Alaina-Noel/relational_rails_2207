@@ -72,10 +72,9 @@ RSpec.describe 'the customers index page', type: :feature do
         customer2 = Customer.create!(first_name: "Maya", last_name: "Jordan" , in_usa:false, credit_score:400 )
         customer3 = Customer.create!(first_name: "Gina", last_name: "Jefferson" , in_usa: true, credit_score: 802 )
         click_link("New Customer")
-        # save_and_open_page
 
-        # expect(current_path).to eq("/customers/new")
-        # expect(page).to have_content("First Name")
+        expect(current_path).to eq("/customers/new")
+        expect(page).to have_content("Enter a new customer:")
       end
     end
   end

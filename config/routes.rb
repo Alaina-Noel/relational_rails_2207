@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/orders', to: 'orders#index'
   get '/orders/:id', to: 'orders#show'
   get '/customers/:id/orders', to: 'customer_orders#index'
+  post '/customers', to: 'customers#create'
   
 
 end
