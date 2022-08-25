@@ -23,6 +23,21 @@ class CustomersController < ApplicationController
     redirect_to '/customers'
   end
 
+  def edit
+    @customer = Customer.find(params[:id])
+  end
+
+  def update
+    @customer = Customer.find(params[:id])
+    @customer.update({
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      in_usa: params[:in_usa],
+      credit_score: params[:credit_score],
+      })
+    redirect_to "/customers/#{@customer.id}"
+  end
+
 
   
 end
