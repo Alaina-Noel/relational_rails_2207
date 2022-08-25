@@ -60,14 +60,22 @@ RSpec.describe 'the customers index page', type: :feature do
       end
 
       it "I can see a link to create a new Customer Record called New Customer" do
-        
+        visit "/customers"
+
         expect(page).to have_content("New Customer")
       end
 
       it "When I click this link then I am taken to '/customers/new' where I see a form for a new customer record" do
-        click_link('New Customer')
-        expect(current_path).to eq("/customers/new")
-        expect(page).to have_content("First Name")
+        visit "/customers"
+
+        customer1 = Customer.create!(first_name: "Sarah", last_name: "Robertson" , in_usa: false, credit_score: 755 )
+        customer2 = Customer.create!(first_name: "Maya", last_name: "Jordan" , in_usa:false, credit_score:400 )
+        customer3 = Customer.create!(first_name: "Gina", last_name: "Jefferson" , in_usa: true, credit_score: 802 )
+        click_link("New Customer")
+        # save_and_open_page
+
+        # expect(current_path).to eq("/customers/new")
+        # expect(page).to have_content("First Name")
       end
     end
   end

@@ -8,5 +8,9 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @order_count = @customer.orders.count
   end
+
+  def new
+    
+  end
   
 end

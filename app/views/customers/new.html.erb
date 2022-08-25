@@ -1,0 +1,7 @@
+<form action="/customers" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Enter a new customer:</p>
+  <input type='text' name='customer[first_name]'/><br/>
+  <textarea name='customer[last_name]'></textarea><br/>
+  <input type='submit'/>
+</form>
