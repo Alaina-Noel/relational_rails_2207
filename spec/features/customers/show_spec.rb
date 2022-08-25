@@ -82,6 +82,25 @@ RSpec.describe 'the customers index page', type: :feature do
 
       expect(current_path).to eq("/orders")
     end
+
+    it 'I see a link at the top of the page that leads me to the customers/index page' do
+      customer = Customer.create!(first_name: "Sarah", last_name: "Robertson" , in_usa: false, credit_score: 755 )
+      order = customer.orders.create!(customer_id: 1, quantity: 400, gift: false, order_type: "kitchen set")
+      visit "/customers/#{customer.id}"
+      
+      expect(page).to have_content("This link will take you to all customers index page")
+    end
+
+    it 'The link on the top of the page will take you to the customers index page' do
+      customer = Customer.create!(first_name: "Sarah", last_name: "Robertson" , in_usa: false, credit_score: 755 )
+      order = customer.orders.create!(customer_id: 1, quantity: 400, gift: false, order_type: "kitchen set")
+      visit "/customers/#{customer.id}"
+      click_on "This link will take you to all customers index page"
+
+      expect(current_path).to eq("/customers")
+    end
   end
+
+  
 
 end
