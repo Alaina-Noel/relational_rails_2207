@@ -1,4 +1,4 @@
-<%= form_with url: "/customers/#{@customer.id}", method: :patch do |form| %>
+<%= form_with url: "/customers/#{@customer.id}", method: :patch, local: true do |form| %>
   <p><%= form.label :first_name, "First Name:" %></p>
   <%= form.text_field :first_name %>
   <p><%= form.label :last_name, "Last Name:" %></p>

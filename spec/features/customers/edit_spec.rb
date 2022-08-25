@@ -19,7 +19,6 @@ RSpec.describe 'the customers edit page', type: :feature do
         fill_in("First Name:", with: 'PeterPoppinSaucin')
         click_on('Submit')
         expect(current_path).to eq("/customers/#{customer.id}")
-
         expect(page).to have_content('PeterPoppinSaucin')
       end
     end
