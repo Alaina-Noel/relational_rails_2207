@@ -11,9 +11,6 @@ Rails.application.routes.draw do
   get '/customers/:id/edit', to: 'customers#edit'
   patch '/customers/:id', to: 'customers#update'
 
-
-  
-
 end
 
 
