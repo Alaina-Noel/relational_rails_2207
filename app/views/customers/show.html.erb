@@ -10,3 +10,4 @@
 <p>ID in Database: <%= @customer.id%>
 <p>order count: <%= @order_count %>
 <%= link_to "Click this link to see all of the orders this person has made.", "/customers/#{@customer.id}/orders" %>
+<%= link_to "Update Customer", "/customers/#{@customer.id}/edit" %>

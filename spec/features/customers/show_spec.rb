@@ -127,9 +127,21 @@ RSpec.describe 'the customers index page', type: :feature do
       expect(page).to have_content(order2.updated_at)
     end
 
+   it "Then I see a link to update the parent Update Customer" do
+    customer = Customer.create!(first_name: "Sarah", last_name: "Robertson" , in_usa: false, credit_score: 755 )
+    visit "/customers/#{customer.id}"
 
+    expect(page).to have_content("Update Customer")
+   end
+
+   it " When I click the link Update Customer Then I am taken to '/customers/:id/edit'" do
+    customer = Customer.create!(first_name: "Sarah", last_name: "Robertson" , in_usa: false, credit_score: 755 )
+    visit "/customers/#{customer.id}"
+    click_link("Update Customer")
+
+    expect(current_path).to eq("/customers/#{customer.id}/edit")
+    expect(page).to have_content("Update Customer")
+   end
+    
   end
-
-  
-
 end
