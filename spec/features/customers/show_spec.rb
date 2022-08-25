@@ -52,7 +52,7 @@ RSpec.describe 'the customers index page', type: :feature do
 
   describe "user count" do
     describe "As a visitor" do
-      describe "When I visit /customers/show" do
+      describe "When I visit /customers" do
         it 'I can see the number of orders a customer made' do
           customer = Customer.create!(first_name: "Alaina", last_name: "Kneiling" , in_usa: true, credit_score: 801 )
           order = customer.orders.create!(quantity: 1, gift: true, order_type: "green shirt")
