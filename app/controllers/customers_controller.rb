@@ -35,7 +35,6 @@ class CustomersController < ApplicationController
       in_usa: params[:in_usa],
       credit_score: params[:credit_score],
       })
-
     redirect_to "/customers/#{@customer.id}"
   end
 
