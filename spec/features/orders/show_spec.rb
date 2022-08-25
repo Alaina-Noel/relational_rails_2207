@@ -50,4 +50,25 @@ end
     expect(page).to have_content(order.created_at)
     expect(page).to have_content(order.updated_at)
   end
+
+  describe 'As a user' do
+    describe 'when I visit /orders/show' do
+      it 'I see a link at the top of the page that leads me to the orders/index page' do
+        customer = Customer.create!(first_name: "Sarah", last_name: "Robertson" , in_usa: false, credit_score: 755 )
+        order = customer.orders.create!(customer_id: 1, quantity: 400, gift: false, order_type: "kitchen set")
+        visit "/orders/#{order.id}"
+
+        expect(page).to have_content("This link will take you to all orders index page")
+      end
+
+      xit 'The link on the top of the page will take you to the orders index page' do
+        customer = Customer.create!(first_name: "Sarah", last_name: "Robertson" , in_usa: false, credit_score: 755 )
+        order = customer.orders.create!(customer_id: 1, quantity: 400, gift: false, order_type: "kitchen set")
+        visit "/orders/#{order.id}"
+        click_on "This link will take you to all orders index page"
+
+        expect(current_path).to eq("/orders/index")
+      end
+    end
+  end
 end
