@@ -1,0 +1,9 @@
+<%= form_with url:"/customers/#{@customer.id}/orders", method: :post, local: true do |form|  %>
+  <p><%= form.label :quantity, "Quantity:" %></p>
+  <%= form.text_field :quantity %>
+  <p><%= form.label :gift, "Gift?" %></p>
+  <%= form.text_field :gift%>
+  <p><%= form.label :order_type, "Gift Description" %></p>
+  <%= form.text_field :order_type %>
+  <%= form.submit "Add Order" %>
+<% end %>
