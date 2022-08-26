@@ -10,4 +10,5 @@
   <p>Updated At <%= @order.updated_at %></p>
   
   <%= link_to "Update Order", "/orders/#{@order.id}/edit" %></br>
+  <%= button_to "Delete Order", "/orders/#{@order.id}", method: :delete %>
 
