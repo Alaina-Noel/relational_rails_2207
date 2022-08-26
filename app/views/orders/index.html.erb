@@ -10,6 +10,8 @@
   <p>Created At <%= order.created_at %></p>
   <p>Updated At <%= order.updated_at %></p>
   <p>customer who ordered this item <%= order.customer.first_name %></p>
+   <p><a href="/orders/<%= order.id %>/edit">Edit</a></p>
+
 
 <% end %>
 
