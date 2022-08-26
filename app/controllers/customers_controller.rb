@@ -38,6 +38,12 @@ class CustomersController < ApplicationController
     redirect_to "/customers/#{@customer.id}"
   end
 
-
+  def destroy
+    orders = Order.where(customer_id: params[:id])
+    customer = Customer.find(params[:id])
+    orders.destroy_all
+    customer.destroy
+    redirect_to '/customers'
+  end
   
 end

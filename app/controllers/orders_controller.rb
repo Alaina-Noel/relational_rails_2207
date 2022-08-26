@@ -21,4 +21,10 @@ class OrdersController < ApplicationController
       })
     redirect_to "/orders/#{@order.id}"
   end
+
+  def destroy
+    Order.destroy(params[:id])
+    redirect_to '/orders'
+  end
+
 end
