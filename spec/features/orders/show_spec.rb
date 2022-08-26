@@ -86,6 +86,24 @@ end
 
         expect(current_path).to eq("/customers")
       end
+
+      it "I can edit a current order and see that updated information on the orders show page" do
+        customer = Customer.create!(first_name: "Peaches", last_name: "Kneiling" , in_usa: true, credit_score: 801 )
+        order = customer.orders.create!(quantity: 400, gift: false, order_type: "kitchen knives")
+
+        visit "/orders/#{order.id}/"
+        click_link('Update Order')
+
+        expect(current_path).to eq("/orders/#{order.id}/edit")
+        expect(page).to have_content("Update Information Here")
+
+        fill_in('Quantity:', with: 31415926)
+
+        click_on('Update Order')
+        expect(current_path).to eq("/orders/#{order.id}")
+
+        expect(page).to have_content("31415926")
+      end
     end
   end
 end
