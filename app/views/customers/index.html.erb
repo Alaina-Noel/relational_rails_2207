@@ -5,6 +5,7 @@
   <h3><%= customer.first_name %><%=" "%><%= customer.last_name %></h3>
   <p>Created at: <%= customer.created_at %></p>
  <p><a href="/customers/<%= customer.id %>/edit">Edit</a></p>
+ <%= button_to "Delete Customer", "/customers/#{customer.id}", method: :delete %>
 <% end %>
 
  <a href="/customers/new">New Customer</a>
