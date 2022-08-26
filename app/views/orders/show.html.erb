@@ -8,5 +8,6 @@
   <p>What was ordered? <%= @order.order_type %></p>
   <p>Created At <%= @order.created_at %></p>
   <p>Updated At <%= @order.updated_at %></p>
-
+  
+  <%= link_to "Update Order", "/orders/#{@order.id}/edit" %></br>
 

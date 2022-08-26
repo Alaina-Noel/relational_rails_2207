@@ -1,0 +1,10 @@
+<h3>  Update Information Here </h3>
+<%= form_with url: "/orders/#{@order.id}", method: :patch, local: true do |form| %>
+  <p><%= form.label :quantity, "Quantity:" %></p>
+  <%= form.text_field :quantity %>
+  <p><%= form.label :gift, "Is this a gift? (put true or false):" %></p>
+  <%= form.text_field :gift %>
+  <p><%= form.label :order_type, "Description of order" %></p>
+  <%= form.text_field :order_type %>
+  <p><%= form.submit "Update Order" %></p>
+<% end %>
