@@ -10,4 +10,6 @@
     <p>Customer ID <%= order.customer_id %></p>
 <p><% end %></p>
 
-<%= link_to "New Order", "/customers/#{@customer.id}/orders/new" %></br>
+<p><%= link_to "New Order", "/customers/#{@customer.id}/orders/new" %></br></p>
+
+<p><%= link_to "Sort Orders Alphabetically", sort_by: "order_type" %></br></p>
