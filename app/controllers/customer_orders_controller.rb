@@ -2,7 +2,11 @@ class CustomerOrdersController < ApplicationController
   
   def index
     @customer = Customer.find(params[:id])
-    @orders = @customer.orders
+    @orders = if params[:sort_by] == 'order_type'
+      @customer.orders.order(:order_type)
+    else
+      @customer.orders
+    end
   end
   
   def new
