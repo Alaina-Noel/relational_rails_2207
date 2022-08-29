@@ -13,15 +13,14 @@ RSpec.describe 'the customers index page', type: :feature do
 
       it 'I can see the gift status of the order' do
         customer = Customer.create!(first_name: "Robert", last_name: "Kneiling" , in_usa: true, credit_score: 754 )
-        order = customer.orders.create!(quantity: 4, gift: false, order_type: "polly pockets")
+        order = customer.orders.create!(quantity: 4, gift: true, order_type: "polly pockets")
         visit '/orders'
-
         expect(page).to have_content(order.gift)
       end
 
       it 'I can see the type or description of the order' do
         customer = Customer.create!(first_name: "Sarah", last_name: "Robertson" , in_usa: true, credit_score: 74 )
-        order = customer.orders.create!( quantity: 400, gift: false, order_type: "kitchen set")
+        order = customer.orders.create!( quantity: 400, gift: true, order_type: "kitchen set")
         visit '/orders'
 
         expect(page).to have_content(order.order_type)
@@ -36,13 +35,12 @@ RSpec.describe 'the customers index page', type: :feature do
         expect(page).to have_content(order.updated_at)
       end
 
-      it 'I can not see the name of the customer who made the order' do
+      it 'I can see the name of the customer who made the order' do
         customer = Customer.create!(first_name: "Robert", last_name: "Kneiling" , in_usa: true, credit_score: 754 )
         order = customer.orders.create!(quantity: 40, gift: true, order_type: "carving knife")
         visit '/orders'
 
-        expect(page).to_not have_content(customer.first_name)
-        expect(page).to_not have_content(customer.last_name)
+        expect(page).to have_content(customer.first_name)
       end
 
       it 'I see a link at the top of the page that leads me to the orders/index page' do
