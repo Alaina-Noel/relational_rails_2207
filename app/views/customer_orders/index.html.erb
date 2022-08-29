@@ -14,7 +14,7 @@
 
 <p><%= link_to "Sort Orders Alphabetically", sort_by: "order_type" %></br></p>
 
-<p><%= form_with url: "/orders/#{@customer.id}/orders", method: :get, local: true do |form| %>
+<p><%= form_with url: "/customers/#{@customer.id}/orders", method: :get, local: true do |form| %>
   <%= form.label :Threshhold %>
   <%= form.number_field :number %></br>
   <%= form.submit 'Only return orders with more than this number of quantity' %>

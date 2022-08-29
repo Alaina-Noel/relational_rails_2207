@@ -4,6 +4,9 @@ class CustomerOrdersController < ApplicationController
     @customer = Customer.find(params[:id])
     @orders = if params[:sort_by] == 'order_type'
       @customer.orders.order(:order_type)
+    elsif params[:commit] == "Only return orders with more than this number of quantity"
+      specificied_quantity = params[:number]
+      @customer.orders.find_orders_above(specificied_quantity)
     else
       @customer.orders
     end
