@@ -138,9 +138,9 @@ RSpec.describe 'the customers index page', type: :feature do
     customer = Customer.create!(first_name: "Sarah", last_name: "Robertson" , in_usa: false, credit_score: 755 )
     visit "/customers/#{customer.id}"
     click_link("Update Customer")
-
     expect(current_path).to eq("/customers/#{customer.id}/edit")
-    expect(page).to have_content("Update Customer")
+    expect(page).to have_button("Submit")
+    expect(page).to have_content("Credit Score:")
    end
     
   end
