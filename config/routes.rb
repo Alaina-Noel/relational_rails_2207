@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get '/customers/:id/orders', to: 'customer_orders#index'
   get '/customers/:id/orders/new', to: 'customer_orders#new'
-  post '/customers/:id/orders', to: 'customer_orders#create'
+  post '/customers/:id/orders', to: 'customer_orders#create' #route designated here & calls customer_orders controller & method create step 2 in the process the backend
 
   patch '/customers/:id', to: 'customers#update'
   patch '/orders/:id', to: 'orders#update'
