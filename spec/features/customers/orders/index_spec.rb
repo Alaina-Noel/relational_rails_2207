@@ -47,6 +47,20 @@ RSpec.describe 'the customers index page', type: :feature do
   
         expect(current_path).to eq("/orders")
       end
+
+      it 'I can filter the page by a certain quantity' do
+        customer = Customer.create!(first_name: "Sarah", last_name: "Cheeseman" , in_usa: true, credit_score: 801 )
+        order1 = customer.orders.create!( quantity: 400, gift: false, order_type: "kitchen set")
+        order2 = customer.orders.create!( quantity: 40, gift: false, order_type: "polly pockets")
+        order3 = customer.orders.create!( quantity: 10, gift: false, order_type: "plates")
+
+        visit "/customers/#{customer.id}/orders"
+        fill_in 'Threshhold', with: "10"
+        click_on "Only return orders with more than this number of quantity"
+  
+        expect(current_path).to eq("/customers/#{customer.id}/orders")
+        expect(page).to have_content("kitchen set")
+      end
     end
 
   end
