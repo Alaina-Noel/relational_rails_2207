@@ -6,7 +6,7 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @order_count = @customer.orders.count
+    @order_count = @customer.number_of_orders
   end
 
   def new
