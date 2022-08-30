@@ -1,4 +1,6 @@
 <%= form_with url:"/customers/#{@customer.id}/orders", method: :post, local: true do |form|  %>
+#client requests this information to go through this route url
+#this is step 1 of a 4 step process
   <p><%= form.label :quantity, "Quantity:" %></p>
   <%= form.text_field :quantity %>
   <p><%= form.label :gift, "Gift?" %></p>

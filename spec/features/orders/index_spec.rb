@@ -61,6 +61,8 @@ RSpec.describe 'the customers index page', type: :feature do
       end
 
       it 'returns the orders above a certian quantity' do
+        visit "/orders"
+
         customer1 = Customer.create(first_name: "Alaina", last_name: "Kneiling", in_usa: true, credit_score: 502)
         order1 = customer1.orders.create!(quantity: 44, gift: true, order_type: "green pants")
         order2 = customer1.orders.create!(quantity: 34, gift: true, order_type: "green shirt")
@@ -68,6 +70,22 @@ RSpec.describe 'the customers index page', type: :feature do
         order4 = customer1.orders.create!(quantity: 14, gift: true, order_type: "green polly pockets")
 
         expect(Order.find_orders_above(34)).to eq([order1])
+      end
+      it 'can delete an order' do
+
+        customer1 = Customer.create(first_name: "Rhonnie", last_name: "Surname", in_usa: true, credit_score: 765)
+        order1 = customer1.orders.create!(quantity: 4, gift: true, order_type: "green tutu")
+        order2 = customer1.orders.create!(quantity: 34, gift: true, order_type: "purple shirt")
+        order3 = customer1.orders.create!(quantity: 24, gift: true, order_type: "green belt")
+        order4 = customer1.orders.create!(quantity: 14, gift: true, order_type: "yellow polly pockets")
+
+        visit "/orders"
+
+        expect(page).to have_content("green tutu")
+        within("#order_#{order1.id}") do #class or id
+        click_on("Delete")
+        end
+        expect(page).to_not have_content("green tutu")
       end
       
     end

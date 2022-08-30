@@ -21,8 +21,10 @@ class CustomerOrdersController < ApplicationController
   end
 
   def create
+    #step 3 in the process - the back end
     @customer = Customer.find(params[:id])
     @customer.orders.create!(order_params)
+    #step 4 directing the user to a diff page
     redirect_to "/customers/#{@customer.id}/orders"  
   end
 

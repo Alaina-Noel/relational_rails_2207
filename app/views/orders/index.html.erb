@@ -2,6 +2,7 @@
 
 <h1>All Orders That are Gifts</h1>
   <% @orders.each do |order| %>
+  <div id= "order_<%=order.id%>" >
   <p>Order ID: <%= order.id %></p>
   <p>Customer ID: <%= order.customer_id %></p>
   <p>Quantity Ordered: <%= order.quantity %></p>
@@ -11,8 +12,8 @@
   <p>Updated At <%= order.updated_at %></p>
   <p>customer who ordered this item <%= order.customer.first_name %></p>
    <p><a href="/orders/<%= order.id %>/edit">Edit</a></p>
-    <%= button_to "Delete Order", "/orders/#{order.id}", method: :delete %>
-
+   <%= button_to "Delete", "/orders/#{order.id}", method: :delete %>
+</div>
 
 <% end %>
 
