@@ -16,16 +16,17 @@ class CustomerOrdersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
 
-  def order_params
-    params.permit(:quantity, :gift, :order_type)
-  end
-
   def create
     #step 3 in the process - the back end
     @customer = Customer.find(params[:id])
     @customer.orders.create!(order_params)
     #step 4 directing the user to a diff page
     redirect_to "/customers/#{@customer.id}/orders"  
+  end
+
+  private
+  def order_params
+    params.permit(:quantity, :gift, :order_type)
   end
 
 end
